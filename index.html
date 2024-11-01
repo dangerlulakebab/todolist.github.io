@@ -7,6 +7,80 @@
     <title>To-do</title>
 <script defer src="bundle.js"></script></head>
 <body>
+        <dialog id="myDialog">
+            <p>New task</p>
+            <form method="dialog">
+
+                <label for="priority">priority</label>
+                <select name="priority" id="priority" required>
+                    <option value="red">red</option>
+                    <option value="orange">orange</option>
+                    <option value="green">green</option>
+                </select>
+
+                <label for="name">Name:  </label>
+                <input type="text" id="name" placeholder="name of your todo" required>
+                
+                <label for="description">description: </label>
+                <input type="text" id="description" required class="text-area">
+
+                <label for="date">Date: </label>
+                <input type="date" id="date" required>
+
+
+                <div class="btns">
+                    <button class="cancel" onclick="document.getElementById('myDialog').close();">cancel</button>
+                    <button class="confirm">confirm</button>
+                </div>
+            </form>
+        </dialog>
+
+    <!--LEFT NAVBAR-->
+    <div class="navbar">
+        <ul>
+            <ul>
+                <li class="main_li task selected">⭐Today</li>
+            </ul>
+            <ul>
+                <li class="first_li main_li blank task">🙏Family</li>
+                <li class="task">Home-chores</li>
+                <li class="task">Personal-things</li>
+            </ul>
+            <ul>
+                <li class="first_li main_li blank task">👜Work</li>
+                <li class="task">New-project</li>
+            </ul>
+        </ul>
+    </div>
+
+    <div>
+        <button onclick="document.getElementById('myDialog').showModal();" class="Add"></button>
+    </div>
+
+    <div class="todo_container">
+         <div class="todo_item green">
+            <div class="title_Date">
+                <p class="title">Wash</p>
+                <p class="dueDate">october 22</p>
+            </div>
+            <p class="description">clean the car.</p>
+            <button class="delete" onclick="deleteTask(this)"></button>
+        </div>
+        
+        
+    </div>
+    
+
     <script src="bundle.js"></script>
+    <script>
+
+    function deleteTask(button) {
+    const todoItem = button.closest('.todo_item');
+
+    if (todoItem) {
+        todoItem.remove();
+    }
+}
+    </script>
 </body>
 </html>
